@@ -5,5 +5,5 @@ import com.pistonprotocol.backend.module.user.api.dto.RegisterRequestDto;
 
 public interface UserService {
     void registerUser(RegisterRequestDto request);
-    void loginUser (LoginRequestDto request);
+    String loginUser(LoginRequestDto request);
 }

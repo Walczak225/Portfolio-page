@@ -1,5 +1,6 @@
 package com.pistonprotocol.backend.module.user.internal;
 
+import com.pistonprotocol.backend.module.user.api.dto.JwtResponseDto;
 import com.pistonprotocol.backend.module.user.api.dto.LoginRequestDto;
 import com.pistonprotocol.backend.module.user.api.dto.RegisterRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -21,8 +22,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody LoginRequestDto request) {
-        userService.loginUser(request);
-        return ResponseEntity.ok("Login successfully");
+    public ResponseEntity<JwtResponseDto> login(@RequestBody LoginRequestDto request) {
+        String token = userService.loginUser(request);
+        return ResponseEntity.ok(new JwtResponseDto(token));
     }
 }
